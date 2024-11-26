@@ -1,15 +1,31 @@
-import './App.css'
-import NavBar from './components/NavBar/NavBar'
-import ItemListContainer from './components/ItemListContainer/ItemListContainer'
-import { useState } from 'react'
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NavBar from './components/NavBar/NavBar';
+import HomeContainer from './components/Home/HomeContainer';
+import ItemListContainer from './components/ItemList/ItemListContainer';
+import ItemDetailContainer from './components/ItemList/ItemDetailContainer';
+import CartContainer from './components/Cart/CartContainer';
 
 function App() {
-  const[cantidadCarrito, setCantidadCarrito] = useState(0)
+  const [cartItems, setCartItems] = useState(0);
 
   return (
     <>
-      <NavBar cantidadCarrito={cantidadCarrito}/>
-      <ItemListContainer mensaje="¡Bienvenido a Spurs Shop!" fn={setCantidadCarrito}/>
+      <BrowserRouter>
+        <div className="App">
+          <NavBar cartItems={cartItems} />
+          <Routes>
+            <Route exact path="/" element={<HomeContainer />} />
+            <Route exact path="/kits" element={<ItemListContainer categoria={"kits"} />} />
+            <Route exact path="/nike" element={<ItemListContainer categoria={"nike"} />} />
+            <Route exact path="/cart" element={<CartContainer />} />
+            <Route exact path="/product/:id" element={<ItemDetailContainer />} />
+            <Route path="*" element={<h1>404</h1>} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </>
   )
 }
