@@ -10,8 +10,9 @@ export default function MyNavbar ({cartItems}) {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/kits">Kits</Nav.Link>
-          <Nav.Link as={Link} to="/nike">Nike</Nav.Link>
+          <Nav.Link as={Link} to={`/category/kits`}>Kits</Nav.Link>
+          <Nav.Link as={Link} to={`/category/nike`}>Nike</Nav.Link>
+          <Nav.Link as={Link} to={`/category/retro`}>Retro</Nav.Link>
         </Nav>
         <Nav> 
           <Nav.Link as={Link} to="/cart"> 

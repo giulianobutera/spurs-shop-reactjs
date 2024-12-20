@@ -14,17 +14,20 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="App">
+        <header>
           <NavBar cartItems={cartItems} />
-          <Routes>
-            <Route exact path="/" element={<HomeContainer />} />
-            <Route exact path="/kits" element={<ItemListContainer categoria={"kits"} />} />
-            <Route exact path="/nike" element={<ItemListContainer categoria={"nike"} />} />
-            <Route exact path="/cart" element={<CartContainer />} />
-            <Route exact path="/product/:id" element={<ItemDetailContainer />} />
-            <Route path="*" element={<h1>404</h1>} />
-          </Routes>
-        </div>
+        </header>
+        <main>
+          <div className="App">
+            <Routes>
+              <Route exact path="/" element={<HomeContainer />} />
+              <Route exact path="/category/:categoryName" element={<ItemListContainer />} />
+              <Route exact path="/product/:id" element={<ItemDetailContainer />} />
+              <Route exact path="/cart" element={<CartContainer />} />
+              <Route path="*" element={<HomeContainer />} />
+            </Routes>
+          </div>
+        </main>
       </BrowserRouter>
     </>
   )

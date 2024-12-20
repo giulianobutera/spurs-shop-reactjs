@@ -1,20 +1,20 @@
-import { getProducts } from "../../data/backend-falso";
 import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { getProducts } from '../../firebase/firebase';
 import ItemList from "../ItemList/ItemList";
 
 export default function HomeContainer() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    getProducts
+    getProducts()
       .then((data) => setProducts(data))
       .catch((error) => console.error(error))
   }, []);
 
   return (
     <>
-      <h3 className="text-start">Todos los productos:</h3>
+      <h3 className="text-start">Explorá todos los productos:</h3>
       <Container> 
         <Row> 
           {products.map((prod) => ( 

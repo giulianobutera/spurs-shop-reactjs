@@ -1,20 +1,22 @@
 import { getCategory } from "../../data/backend-falso";
 import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import ItemList from "../ItemList/ItemList";
 
-export default function ItemListContainer({categoria}) {
+export default function ItemListContainer() {
+  const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    getCategory(categoria)
+    getCategory(categoryName)
       .then((data) => setProducts(data))
       .catch((error) => console.error(error))
-  }, [categoria]);
+  }, [categoryName]);
 
   return (
     <>
-      <h3 className="text-start">Explorar todo en {categoria}:</h3>
+      <h3 className="text-start">Explorá todo en {categoryName}:</h3>
       <Container> 
         <Row> 
           {products.map((prod) => ( 
