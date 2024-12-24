@@ -1,14 +1,15 @@
-import { getCategory } from "../../data/backend-falso";
+import { getCategory } from '../../firebase/firebase';
 import { useState, useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import ItemList from "../ItemList/ItemList";
+import ItemList from "./ItemList";
 
 export default function ItemListContainer() {
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    setProducts([]);
     getCategory(categoryName)
       .then((data) => setProducts(data))
       .catch((error) => console.error(error))
@@ -17,15 +18,15 @@ export default function ItemListContainer() {
   return (
     <>
       <h3 className="text-start">Explorá todo en {categoryName}:</h3>
-      <Container> 
-        <Row> 
-          {products.map((prod) => ( 
-            <Col key={prod.id} sm={12} md={6} lg={4}> 
-              <ItemList key={prod.id} product={prod} />
-            </Col> 
-          ))} 
-        </Row> 
-      </Container>
+      {products.length > 0 ? (
+        <section>
+          <ItemList products={products} />
+        </section>
+      ) : (
+        <section className='spinner-section'>
+          <Spinner />
+        </section>
+      )}
     </>
   );
 }
