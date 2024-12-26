@@ -85,3 +85,14 @@ export async function getCategory(categoryName) {
     console.error('Error al obtener los productos: ', error);
   }
 }
+
+// guardar una orden de compra
+export async function newBuyOrder(buyOrderInfo) {
+  const ordersCollection = collection(db, 'orders');
+  try {
+    const docRef = await addDoc(ordersCollection, buyOrderInfo);
+    return docRef.id;
+  } catch (error) {
+    console.error('Error al agregar la nueva orden de compra: ', error);
+  }
+}

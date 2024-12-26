@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useCart } from '../../hooks/useCart';
+import { Button } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 
-function ItemCount({ product }) {
+export default function ItemCount({ product }) {
   const [cantidad, setCantidad] = useState(1);
   const {agregarItem} = useCart();
 
@@ -17,16 +19,21 @@ function ItemCount({ product }) {
 
   const agregarAlCarrito = () => {
     agregarItem({...product, amount: cantidad});
+    Swal.fire({ 
+      position: "top-end",
+      icon: "success",
+      title: "El producto se agregó a tu carrito",
+      showConfirmButton: false,
+      timer: 1000
+    });
   };
 
   return (
     <div>
-      <button className="btn btn-primary me-2" onClick={disminuirCantidad} disabled={cantidad === 1}>-</button>
+      <Button className="btn btn-primary me-2" onClick={disminuirCantidad} disabled={cantidad === 1}>-</Button>
       <span className="me-2">{cantidad}</span>
-      <button className="btn btn-primary me-2" onClick={aumentarCantidad}>+</button>
-      <button className="btn btn-primary" onClick={agregarAlCarrito}>Agregar al carrito</button>
+      <Button className="btn btn-primary me-2" onClick={aumentarCantidad}>+</Button>
+      <Button className="btn btn-primary" onClick={agregarAlCarrito}>Agregar al carrito</Button>
     </div>
   );
 }
-
-export default ItemCount;
