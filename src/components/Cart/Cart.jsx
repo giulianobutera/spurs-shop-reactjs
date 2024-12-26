@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import CartItem from './CartItem';
 import Swal from 'sweetalert2';
 
-function Cart() {
+export default function Cart() {
   const {cart, sumaPrecioItems, vaciarCarrito} = useCart();
 
   const vaciarCarritoCompleto = () => {
@@ -67,5 +67,3 @@ function Cart() {
     </>
   );
 }
-
-export default Cart;

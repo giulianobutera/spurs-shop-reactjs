@@ -1,8 +1,8 @@
 # Spurs Shop
-Esta app web desarrollada en ReactJS es una simulación de una tienda virtual (ecommerce) con vestimenta del club de fútbol [_Tottenham Hotspur_](https://www.tottenhamhotspur.com/), equipo basado en Lóndres, Inglaterra.
+Esta app web desarrollada con ReactJS es una simulación de una tienda virtual (ecommerce) con vestimenta del club de fútbol [_Tottenham Hotspur_](https://www.tottenhamhotspur.com/), equipo basado en Lóndres, Inglaterra.
 
 ## Demo en Vercel
-Se puede acceder a la demo de la app web desde el siguiente link: [link vercel]()
+Se puede acceder a la demo de la app web desde el siguiente link: [spurs-shop.vercel.app](https://spurs-shop.vercel.app/)
 
 ## Dependencias utilizadas
 Para el desarrollo de esta app web, se han utilizado, además de la librería de ReactJS, las siguientes dependencias externas:

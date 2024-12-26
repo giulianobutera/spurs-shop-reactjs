@@ -3,7 +3,7 @@ import { FaTrash } from 'react-icons/fa';
 import { useCart } from '../../hooks/useCart';
 import Swal from 'sweetalert2';
 
-function CartItem({ item }) {
+export default function CartItem({ item }) {
   const {eliminarItem} = useCart();
 
   const eliminarItemDeCarrito = () => {
@@ -47,5 +47,3 @@ function CartItem({ item }) {
     </>
   );
 }
-
-export default CartItem;
